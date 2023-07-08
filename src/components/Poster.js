@@ -4,8 +4,8 @@ import Card from 'react-bootstrap/Card';
 export default function Poster() {
   return (
     <div>
-      <Card style={{ width: '18rem' , maxHeight:'360px'}}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card style={{ width: '18rem' , maxHeight:'360px' , margin: '6px'}}>
+      <Card.Img variant="top" src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFuZWVyJTIwdGlra2F8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"/>
       <Card.Body>
         <Card.Title>Card Title</Card.Title>
         <Card.Text>
@@ -16,7 +16,7 @@ export default function Poster() {
             <select className="m-2 h-100 bg-success rounded">
                 {Array.from(Array(6), (e,i) => {
                     return (
-                        <option value={i+1}>{i+1}</option>
+                        <option key={i+1} value={i+1}>{i+1}</option>
                     )
                 })}
             </select>
