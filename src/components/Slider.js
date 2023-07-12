@@ -5,15 +5,18 @@ import Button from 'react-bootstrap/Button';
 
 export default function Slider() {
   return (
-    <div>
-      <div id="carousel-inner" style={{objectFit: 'cover !important'}}>
-      <Carousel fade>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://source.unsplash.com/random/?vegetables"
-          alt="First slide"
-        />
+    <div style={{ minWidth: "100vw" }}>
+      <div style={{ width: "60%", margin: "0 auto" }}>
+        <div id="carousel-inner">
+       <Carousel fade>
+       <Carousel.Item>
+            <img style={{objectFit: "cover !important",
+                  margin: "auto",
+                  maxHeight: "80vh"}}
+            className="d-block w-100"
+            src="https://source.unsplash.com/random/?Muffins"
+            alt="First slide"
+            />
         <Carousel.Caption>
         <Form className="d-flex">
             <Form.Control
@@ -28,9 +31,11 @@ export default function Slider() {
       </Carousel.Item>
 
       <Carousel.Item>
-        <img
+        <img style={{objectFit: "cover !important",
+                  margin: "auto",
+                  maxHeight: "80vh"}}
           className="d-block w-100"
-          src="https://source.unsplash.com/random/?pizza"
+          src="https://source.unsplash.com/random/?Spaghetti"
           alt="Second slide"
         />
         <Carousel.Caption>
@@ -47,7 +52,9 @@ export default function Slider() {
       </Carousel.Item>
 
       <Carousel.Item>
-        <img
+        <img style={{objectFit: "cover !important",
+                  margin: "auto",
+                  maxHeight: "80vh"}}
           className="d-block w-100"
           src="https://source.unsplash.com/random/?burger"
           alt="Third slide"
@@ -65,7 +72,9 @@ export default function Slider() {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    </div>
       </div>
     </div>
   )
 }
+
