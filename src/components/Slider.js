@@ -12,7 +12,8 @@ export default function Slider() {
        <Carousel.Item>
             <img style={{objectFit: "cover !important",
                   margin: "auto",
-                  maxHeight: "80vh"}}
+                  maxHeight: "80vh",
+                  filter: 'brightness(30%)'}}
             className="d-block w-100"
             src="https://source.unsplash.com/random/?Muffins"
             alt="First slide"
@@ -33,7 +34,8 @@ export default function Slider() {
       <Carousel.Item>
         <img style={{objectFit: "cover !important",
                   margin: "auto",
-                  maxHeight: "80vh"}}
+                  maxHeight: "80vh",
+                  filter: 'brightness(30%)'}}
           className="d-block w-100"
           src="https://source.unsplash.com/random/?Spaghetti"
           alt="Second slide"
@@ -54,7 +56,8 @@ export default function Slider() {
       <Carousel.Item>
         <img style={{objectFit: "cover !important",
                   margin: "auto",
-                  maxHeight: "80vh"}}
+                  maxHeight: "80vh",
+                  filter: 'brightness(30%)'}}
           className="d-block w-100"
           src="https://source.unsplash.com/random/?burger"
           alt="Third slide"

@@ -26,8 +26,12 @@ export default function Header() {
             <Nav.Link>Home</Nav.Link>
             </LinkContainer>
             
-            <LinkContainer to='/'>
+            <LinkContainer to='/login'>
             <Nav.Link>Login</Nav.Link>
+            </LinkContainer>
+
+            <LinkContainer to='/createuser'>
+            <Nav.Link>SignUp</Nav.Link>
             </LinkContainer>
         
           </Nav>
