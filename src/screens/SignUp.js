@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {LinkContainer} from 'react-router-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
-    const [credentials, setCredentials] = useState({name:"", email:"", password:"", location:""})
+    const [credentials, setCredentials] = useState({name:"", email:"", password:"", location:""});
+    let navigate = useNavigate();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -19,7 +21,9 @@ export default function SignUp() {
         const json = await response.json();
         console.log(json);
 
-        if(!json.success) {
+        if(json.success) {
+          navigate('/login');
+        } else {
             alert('Enter valid credentials');
         }
     }
