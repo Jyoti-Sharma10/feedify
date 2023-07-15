@@ -1,20 +1,65 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Poster from '../components/Poster'
-import Slideshow from '../components/Slider'
+import Slider from '../components/Slider';
+import Carousel from 'react-bootstrap/Carousel';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 export default function Home() {
+  const[foodCat, setFoodCat] = useState([]);
+  const[foodItem, setFoodItem] = useState([]);
+
+  const loadData = async () => {
+    let response = await fetch('http://localhost:5000/api/foodData',{
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    });
+
+    response = await response.json();
+    setFoodItem(response[0]);
+    setFoodCat(response[1]);
+  }
+
+  useEffect(() => {
+    loadData()
+  }, []);
+
+  
+
+
   return (
     <div>
-      <div><Header/></div>
-      <div><Slideshow/></div>
-      <div>
-        <Poster />
-        <Poster/>
-        <Poster/>
-        <Poster/>
-        <Poster/>
+    <div><Header/></div>
+    <div><Slider/></div>
+      <div className='container'>
+        {
+          foodCat !== [] ? foodCat.map((data) => {
+            return(
+              <div className='row mb-3'>
+              <div key={data._id} className='fs-3 m-3'> 
+                {data.CategoryName} </div>
+                <hr/>
+                {
+                  foodItem !== [] ? foodItem.filter((item) => item.CategoryName === data.CategoryName)
+                  .map( filterItems => {
+                    return (
+                      <div key={filterItems._id} className='col-12 col-md-6 col-lg-3'>
+                        <Poster foodName = {filterItems.name}
+                        options = {filterItems.options[0]}
+                        imgSrc = {filterItems.img}></Poster>
+                        </div>
+                    )
+                  }) : <div> No such data found </div>
+                }
+              </div>
+
+            ) 
+          }) : ""
+        }
       </div>
       <div><Footer/></div>
     </div>
