@@ -6,14 +6,17 @@ import Carousel from 'react-bootstrap/Carousel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const carouselImageStyle = {
-  objectFit: "cover",
-  margin: "auto",
-  maxHeight: "80vh",
-  filter: "brightness(30%)",
-};
 
 export default function Home() {
+
+  const carouselImageStyle = {
+    objectFit: "cover",
+    margin: "auto",
+    maxHeight: "80vh",
+    filter: "brightness(30%)",
+  };
+  
+
   const[foodCat, setFoodCat] = useState([]);
   const[foodItem, setFoodItem] = useState([]);
   const[search, setSearch] = useState('');
@@ -41,6 +44,7 @@ export default function Home() {
   return (
     <div>
     <div><Header/></div>
+    <div>
     <div style={{ minWidth: "100vw", position: "relative" }}>
   <div style={{ width: "60%", margin: "0 auto" }}>
     <div id="carousel-inner">
@@ -86,6 +90,7 @@ export default function Home() {
     </div>
   </div>
 </div>
+    </div>
 
 
       <div className='container'>
@@ -101,9 +106,8 @@ export default function Home() {
                   .map( filterItems => {
                     return (
                       <div key={filterItems._id} className='col-12 col-md-6 col-lg-3'>
-                        <Poster foodName = {filterItems.name}
-                        options = {filterItems.options[0]}
-                        imgSrc = {filterItems.img}></Poster>
+                        <Poster foodItem = {filterItems}
+                        options = {filterItems.options[0]}></Poster>
                         </div>
                     )
                   }) : <div> No such data found </div>

@@ -4,9 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from './screens/SignUp';
 import Login from './screens/Login';
+import { CartProvider } from './components/ContextReducer';
 
 function App() {
   return (
+    <CartProvider>
    <Router>
     <div>
       <Routes>
@@ -16,6 +18,7 @@ function App() {
       </Routes>
     </div>
    </Router>
+    </CartProvider>
   );
 }
 

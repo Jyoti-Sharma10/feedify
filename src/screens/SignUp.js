@@ -24,7 +24,7 @@ export default function SignUp() {
         if(json.success) {
           navigate('/login');
         } else {
-            alert('Enter valid credentials');
+          alert('Enter valid credentials');
         }
     }
 
