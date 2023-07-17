@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { LinkContainer} from "react-router-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from 'react-router-dom';
+import Badge from "react-bootstrap/Badge";
 
 export default function Header() {
 
@@ -31,7 +32,7 @@ export default function Header() {
               {localStorage.getItem("authToken") ? (
                 <LinkContainer to="/">
                   <Nav.Link>My Orders</Nav.Link>
-                </LinkContainer>
+                </LinkContainer> 
               ) : (
                 ""
               )}
@@ -56,7 +57,8 @@ export default function Header() {
                 <Nav>
                   <Button
                     variant="btn bg-white text-success mx-1">
-                    My Cart
+                    My Cart {" "}
+                    <Badge pill bg='danger'>2</Badge>
                   </Button>
                     <Button variant="btn bg-white text-success mx-1" onClick={handleLogout}>
                       Logout

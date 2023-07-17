@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import { useDispatchCart, useCart } from './ContextReducer';
 
@@ -11,11 +11,17 @@ export default function Poster(props) {
   const [qty, setQty] = useState(1);
   const [size, setSize] = useState('');
   let data = useCart();
+  const priceRef = useRef();
 
   const handleAddToCart = async () => {
-      await dispatch({type:'ADD', id: props.foodItem._id, name: props.foodItem.name, price: props.foodItem.finalPrice, qty: qty, size: size});
+      await dispatch({type:'ADD', id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size});
       console.log(data);
   }
+
+  let finalPrice = qty * parseInt(options[size]);
+  useEffect(() => {
+    setSize(priceRef.current.value)
+  }, []);
 
   return (
     <div>
@@ -32,13 +38,13 @@ export default function Poster(props) {
                 })}
             </select>
 
-            <select className='m-2 h-100 bg-success text-white fs-5' onChange={(e) => setSize(e.target.value)}>
+            <select className='m-2 h-100 bg-success text-white fs-5' ref={priceRef} onChange={(e) => setSize(e.target.value)}>
                 {priceOptions.map((data) => {
                   return <option key={data} value={data}>{data}</option>
                 })}
             </select>
             <div className="d-inline h-100 fs-6">
-             Total Price
+            ₹{finalPrice}/-
             </div>
             <hr/>
             <button className='btn btn-success justify-center ms-2' onClick={handleAddToCart}>Add to Cart</button>
