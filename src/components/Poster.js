@@ -12,11 +12,38 @@ export default function Poster(props) {
   const [size, setSize] = useState('');
   let data = useCart();
   const priceRef = useRef();
+  let foodItem = props.item || {};
 
   const handleAddToCart = async () => {
-      await dispatch({type:'ADD', id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size});
-      console.log(data);
+    let food = []
+    for (const item of data) {
+      if (item.id === foodItem._id) {
+        food = item;
+        break;
+      }
+    }
+    console.log(food)
+    console.log(new Date())
+    if ((food.length === 0)) {
+      if (food.size === size) {
+        await dispatch({ type: "UPDATE", id: foodItem._id, price: finalPrice, qty: qty })
+        return
+      }
+      else if (food.size !== size) {
+        await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size,img: props.ImgSrc })
+        console.log("Size different so simply ADD one more to the list")
+        return
+      }
+      return
+    }
+
+    await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size })
+
+
+    // setBtnEnable(true)
+
   }
+
 
   let finalPrice = qty * parseInt(options[size]);
   useEffect(() => {
