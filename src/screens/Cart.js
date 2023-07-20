@@ -16,7 +16,6 @@ export default function Cart() {
   return (
     <div>
       <Table responsive>
-      <thead>
         <tr>
           <th>#</th>
           {Array.from({ length: 12 }).map((_, index) => (
@@ -43,27 +42,6 @@ export default function Cart() {
             <th key={index}>Table heading</th>
           ))}
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-        <th>#</th>
-          {Array.from({ length: 12 }).map((_, index) => (
-            <th key={index}>Table heading</th>
-          ))}
-        </tr>
-        <tr>
-        <th>#</th>
-          {Array.from({ length: 12 }).map((_, index) => (
-            <th key={index}>Table heading</th>
-          ))}
-        </tr>
-        <tr>
-        <th>#</th>
-          {Array.from({ length: 12 }).map((_, index) => (
-            <th key={index}>Table heading</th>
-          ))}
-        </tr>
-      </tbody>
     </Table>
     </div>
   )
