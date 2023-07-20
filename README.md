@@ -33,7 +33,6 @@ The following are the major dependencies used in the application:
 -redux: State container library for managing application state.
 -redux-thunk: Middleware for handling asynchronous actions with Redux.
 -react-bootstrap: UI library for React, providing pre-styled components.
--dotenv: Library for loading environment variables from a .env file.
 
 
 Contributing
