@@ -9,14 +9,16 @@ export default function Cart() {
     if(data.length === 0) {
         return (
             <div>
-                <div className='m-5 w-100 text-center fs-3'>The cart is empty!</div>
+                <div className='m-5 w-100 text-center fs-3'>
+                  <p style={{color: 'white'}}>The cart is empty!</p>
+                  </div>
             </div>
         )
     }
 
     const handleCheckOut = async () => {
       let userEmail = localStorage.getItem("userEmail");
-      let response = await fetch("http://localhost:5000/api/auth/orderData", {
+      let response = await fetch("http://localhost:5000/api/orderData", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -59,7 +61,7 @@ export default function Cart() {
             ))}
           </tbody>
     </Table>
-    <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div>
+    <div><h1 className='fs-2' style={{color:'white'}}>Total Price: {totalPrice}/-</h1></div>
     <div>
           <button className='btn bg-success mt-5 ' onClick={handleCheckOut} > Check Out </button>
         </div>

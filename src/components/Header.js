@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import { FaShoppingCart } from 'react-icons/fa';
 import { useCart } from './ContextReducer';
-import Model from '../Model';
+import Modal from '../Modal.js';
 import Cart from '../screens/Cart';
 
 export default function Header() {
@@ -67,11 +67,11 @@ export default function Header() {
               <Nav className="ml-auto">
                 <Nav>
                   <div className="bg-white mx-2" onClick={loadCart}>
-                  <Badge color="white" className="bg-white" badgeContent={items.length} >
+                  <Badge color="white" className="bg-white" badgecontent={items.length} >
                   <FaShoppingCart color='green' fontSize='25px'/>
                   </Badge>
                   </div>
-                  {cartView ? <Model onClose={() => setCartView(false)}><Cart></Cart></Model> : ""}
+                  {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}
                   <Button
                     variant="btn bg-white text-success mx-1"
                     onClick={handleLogout}

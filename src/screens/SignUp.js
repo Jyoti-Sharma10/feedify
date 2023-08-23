@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {LinkContainer} from 'react-router-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import img from '../assests/food.avif';
+import '../global.css';
 
 export default function SignUp() {
     const [credentials, setCredentials] = useState({name:"", email:"", password:"", location:""});
@@ -34,7 +36,21 @@ export default function SignUp() {
 
   return (
     <>
-    <div className='container'>
+      <div className="container wrapper" >
+        <div className="my-3" style={{display: "flex", flexDirection: "row"}}>
+          <div className="my-3 d-none d-lg-flex"
+            style={{flex: 1, display: "flex",alignItems: "center", justifyContent: "center"}}>
+            <img
+              src={img}
+              alt="food"
+              style={{
+                width: "100%",
+                objectFit: "cover",
+                maxHeight: "70vh",
+              }}
+            />
+          </div>
+          <div className="container" style={{ flex: 1, padding: "2.5rem 1.25rem" }}>
     <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
             <Form.Label>Name</Form.Label>
@@ -58,13 +74,21 @@ export default function SignUp() {
         <Form.Control type="text" placeholder="Enter your location" name='location' value={credentials.location} onChange={onChange} />
       </Form.Group>
 
-      <Button variant="success m-3" type="submit">Submit</Button>
-
-      <LinkContainer to='/login'>
-      <Button variant="danger m-3">Existing user</Button>
+      <div className="text-center">
+        <Button className="btn-hover color mb-3" type="submit">
+          Sign up
+        </Button>
+        </div>
+        <h4 className="text-center">Already a user?</h4>
+        <LinkContainer to="/login">
+        <div className="text-center">
+        <Button className="btn-hover color my-1">Login</Button>
+        </div>
       </LinkContainer>
     </Form>
     </div>
+      </div>
+      </div>
     </>
   )
 }
